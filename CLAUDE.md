@@ -40,7 +40,7 @@ Keep product names, tagline and technical terms (StoreKit, entitlement, etc.) as
 - `decisions/`: one file per decision (`001-…` Decided/Idea, `rNN-…` Rejected), each with Status, Context, Options, Choice, Consequences, Open items.
 - `overview.md`, `ios-native-tools.md`, `build-order.md`, `naming-and-copy.md`: supporting documents. `open-questions.md`: the single pending / "to verify" list.
 - `Vibra-Decisiones.md`: the original monolithic document, kept until the user confirms the split; then remove it. Do not edit it; edit the split files.
-- Do not create a `sprints/` folder without asking.
+- `sprints/`: Sprintmodus exports in Spanish, one file per sprint (`sprint-1.md`). Created on explicit request only.
 
 ## Decision workflow
 
@@ -66,7 +66,7 @@ Also decided: **DbUp** migrations · **Cloudflare R2 + CDN** for audio, **Hetzne
 ## Sprint export (later phase)
 
 - Only when the user explicitly asks. Do not generate sprints while decisions are still open.
-- Sprint plan is decided: **3 sprints of 8 days**, starting 2026-11-23, ending 2026-12-16; numbering starts at 1 (see `build-order.md`). Never invent estimates (points, hours) or assignees; ask.
+- Sprint plan is decided: **3 sprints of 8 days**, starting 2026-11-23, ending 2026-12-16; numbering starts at 1 (see `build-order.md`). Estimates (puntos, horas) and assignees are never invented unprompted: Sprint 1 has them because the user asked (assignee Gianfranco Diaz Badoino; 74 points, 137 hours). Ask before estimating other sprints.
 - Output is Markdown in **Spanish**.
 - Format: Sprintmodus import file. Exact specification below; follow it literally.
 
@@ -81,6 +81,7 @@ Output **only the file content**: no explanations, no surrounding code fences. A
 - Everything is optional except the title. Do not write status or identifiers.
 - A backlog item may list tasks inline under `**Tareas**` as `- Title [3h]` (hours optional), or as `####` task headings.
 - Optional HTML comments are allowed as notes.
+- **Tasks always carry the same `sprint` as their parent backlog item.** Because inline tasks (`- Title [3h]`) cannot hold attributes, write tasks as `#### Tarea:` headings with `- horas:` and `- sprint:`.
 
 Example:
 

@@ -13,6 +13,7 @@ Split from the original `Vibra-Decisiones.md`. Implementation-level rules live i
 | [build-order.md](build-order.md) | Suggested build order |
 | [naming-and-copy.md](naming-and-copy.md) | Name, tagline, descriptions |
 | [open-questions.md](open-questions.md) | Single pending / to-verify list |
+| [sprints/sprint-1.md](sprints/sprint-1.md) | Sprint 1 export (Sprintmodus, Spanish) |
 
 ## Decisions
 

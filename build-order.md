@@ -19,4 +19,4 @@ Total time: 24 days starting 2026-11-23 (day 1), ending 2026-12-16. **3 sprints 
 
 **Cut candidates if time runs short:** Library (playlists, likes, history) and offline downloads. Which to drop is not decided.
 
-Sprint exports are only generated when explicitly requested (see `CLAUDE.md`). Estimates (points, hours) and assignees are not invented.
+Sprint exports are only generated when explicitly requested (see `CLAUDE.md`). Estimates (points, hours) and assignees are given only on request. Sprint 1 has them: 74 points, 137 hours, assignee Gianfranco Diaz Badoino.
