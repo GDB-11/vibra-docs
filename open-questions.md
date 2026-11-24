@@ -6,11 +6,10 @@ All planning decisions are closed (2026-11-23). What remains is verification, to
 
 | Item | Related |
 |---|---|
-| OpenAPI version supported by `swift-openapi-generator`; configure .NET 11 export accordingly | [005](decisions/005-rest-openapi-swift-client.md) |
+| OpenAPI 3.1 chosen (3.2 is preliminary in the generator); confirm the generator processes the real .NET 11 export pinned to 3.1 | [005](decisions/005-rest-openapi-swift-client.md) |
 | `AVPlayer` plays and seeks a remote FLAC through R2/CDN with signed access and range requests | [003](decisions/003-audio-storage-cdn.md), [004](decisions/004-audio-format-flac.md) |
 | Signed URLs vs CDN custom domain on R2 (presigned URLs use the S3 endpoint) | [003](decisions/003-audio-storage-cdn.md) |
 | Current R2 free-tier limits and Cloudflare terms for audio on the free plan | [003](decisions/003-audio-storage-cdn.md) |
-| Testcontainers, compose/Quadlet and Aspire working on Podman; Podman in CI | [016](decisions/016-podman-containers.md) |
 | DbUp compatibility with .NET 11 | [002](decisions/002-postgres-dapper-npgsql.md) |
 | Rip format of the purchased CD (FLAC or WAV) | [004](decisions/004-audio-format-flac.md) |
 | Exact version number of "latest iOS" against installed Xcode | [008](decisions/008-ios-mvvm-local-packages.md) |
