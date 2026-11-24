@@ -25,8 +25,8 @@ PostgreSQL, accessed with Dapper + Npgsql. **No EF Core.** Search uses Postgres 
 - Details: `vibra-backend/CLAUDE.md` (Data access).
 
 ## Open items
-- **To verify:** DbUp compatibility with .NET 11 (spike in Sprint 1).
 - **To verify:** `pg_trgm` can be created by the DB owner on the chosen Postgres image (trusted extension since PG13).
 
 ## Corrections
 Original Spanish draft said EF Core 11 / `DbContext`; replaced by Dapper + Npgsql.
+- **2026-11-23, DbUp spike (Sprint 1):** verified on .NET SDK 11.0.100 (`net11.0`), `dbup-postgresql` 7.0.1 (`dbup-core` 6.1.1, Npgsql 11.0.0 restored; package targets `net8.0` and `netstandard2.0`), PostgreSQL 18 in Podman. Embedded scripts per module applied on an empty DB, one journal table per module (`<module>_schemaversions`), a second run applied 0 scripts, 0 build warnings. DbUp is compatible with .NET 11; the "to verify" is closed.
