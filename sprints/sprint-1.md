@@ -144,7 +144,8 @@ Como desarrollador quiero el repositorio del contrato OpenAPI para versionar la 
 Como desarrollador quiero decidir qué contiene `vibra-db` para no duplicar lo que ya viaja en las migraciones de cada módulo.
 
 **Criterios de aceptación**
-- [ ] El alcance queda registrado en la decisión 002 (solo SQL transversal, como la extensión `pg_trgm` y datos semilla, o ningún contenido)
+- [ ] El alcance queda registrado en la decisión 002: `vibra-db` contiene migraciones por módulo (incluida `pg_trgm`), datos semilla, archivo de composición con scripts de inicio y documentación del esquema
+- [ ] Las decisiones 011 y 016 y `open-questions.md` son coherentes con ese alcance
 
 #### Tarea: Decidir el alcance y registrarlo en la decisión 002
 - horas: 1

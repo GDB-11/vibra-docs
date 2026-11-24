@@ -20,7 +20,7 @@ All planning decisions are closed (2026-11-23). What remains is verification, to
 |---|---|
 | Which features to cut if time runs short (Library, offline downloads) | [build-order.md](build-order.md) |
 | Apply the Podman / DbUp / R2 wording changes to `vibra-backend/CLAUDE.md` (from the backend repo; draft given 2026-11-23) | [016](decisions/016-podman-containers.md) |
-| Scope of `vibra-db` (cross-cutting SQL only, or nothing); a Sprint 1 task | [002](decisions/002-postgres-dapper-npgsql.md) |
+| Update `vibra-backend/CLAUDE.md` for migrations/compose living in `vibra-db` and `scripts/sync-db.sh` (from the backend repo) | [002](decisions/002-postgres-dapper-npgsql.md) |
 
 ## Closed (2026-11-23)
 Sprint length (3 × 8 days) · 3 native tools confirmed · DbUp · Hetzner VPS + Cloudflare R2/CDN · lossless for everyone · Simulator only · latest iOS · skeletons in Sprint 1 · catalog from owned CD.
