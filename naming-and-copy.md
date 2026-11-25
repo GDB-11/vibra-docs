@@ -16,6 +16,6 @@
 >
 > **Stack:** SwiftUI · Swift 6 · StoreKit 2 · AVFoundation · WidgetKit · ASP.NET Core 11 · Dapper · PostgreSQL · FFmpeg · OpenAPI.
 >
-> *Educational project. Payments are simulated and the music is freely licensed.*
+> *Educational project. Payments are simulated. The music comes from CDs owned by the author and isn't distributed with the project.*
 
 Before publishing anything under the name "Vibra", check availability on the App Store and GitHub (short names are often taken). Not an issue for a course demo.

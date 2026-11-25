@@ -16,7 +16,7 @@ Small demo catalog; `AVPlayer` plays FLAC natively on iOS, including background 
 
 ## Consequences
 - Size: roughly 20–40 MB per ~4 min song; ~15 songs = hundreds of MB. Fine for a demo; mind mobile data and offline downloads.
-- Transcoding an MP3 to FLAC improves nothing: need truly lossless sources (FLAC, or WAV converted with FFmpeg) with a free license.
+- Transcoding an MP3 to FLAC improves nothing: need truly lossless sources (FLAC, or WAV converted with FFmpeg), taken from the owned CD (see [Catalog source](#catalog-source)).
 - For a small catalog, progressive download with range requests is enough; HLS is optional (verify with a test file at the start).
 
 ## Ideas (not decided)
