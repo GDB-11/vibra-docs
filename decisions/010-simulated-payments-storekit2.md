@@ -17,7 +17,7 @@ Payments must be simulated, and StoreKit 2 is one of the 3 required native tools
 
 ## Consequences
 - **Known limitation, document it:** production would verify the JWS with the App Store Server API.
-- Every purchasable item is a distinct StoreKit product: define only a few albums/tracks (e.g. 5 and 10) and map via `store_product_id`.
+- Every purchasable item is a distinct StoreKit product: define only a few albums/tracks (e.g. 5 and 10) and map via `StoreProductId`.
 - Demo trick: Editor > Subscription Renewal Rate > Monthly Renewal Every 30 Seconds.
 
 ## Paid Apple account?

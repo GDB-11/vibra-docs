@@ -22,8 +22,8 @@ Payments are **simulated**. The music for the course was acquired legally and is
   │ ASP.NET Core 11 API      │  │ CDN + Object   │
   │ modular monolith         │  │ storage (audio,│
   │ Identity│Catalog│Library │  │ cover art)     │
-  │ Streaming│History│Search │  └───────▲────────┘
-  │ Billing                  │          │ writes
+  │ Streaming│History│Billing│  └───────▲────────┘
+  │                          │          │ writes
   └───┬────────┬─────────┬───┘     ┌────┴─────────┐
   PostgreSQL  Valkey   Job queue─▶ │ Transcoding  │
   (metadata)  (cache)              │ worker       │

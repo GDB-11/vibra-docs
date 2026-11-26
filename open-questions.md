@@ -20,11 +20,8 @@ The initial planning decisions were closed on 2026-11-23. What remains is verifi
 | Item | Related |
 |---|---|
 | Which features to cut if time runs short (Library, offline downloads) | [build-order.md](build-order.md) |
-| Apply the Podman / DbUp / R2 wording changes to `vibra-backend/CLAUDE.md` (from the backend repo; draft given 2026-11-23) | [016](decisions/016-podman-containers.md) |
-| Update `vibra-backend/CLAUDE.md` for migrations/compose living in `vibra-db` and `scripts/sync-db.sh` (from the backend repo) | [002](decisions/002-postgres-dapper-npgsql.md) |
-| Keep or remove the Search module, now nearly empty (also touches the backend skeleton) | [001](decisions/001-modular-monolith.md), [018](decisions/018-database-schema.md) |
-| Update `vibra-backend` (from that repo): `CLAUDE.md` naming, UTC and audit columns, `Payment.idempotency_key`, `UNIQUE(user_id, item_type, item_id)`, Search ownership, migration order; remove `MatchNamesWithUnderscores` from `BaseDatabaseService` | [017](decisions/017-database-conventions.md), [018](decisions/018-database-schema.md) |
-| Set the database time zone to UTC in `vibra-db/compose` (from that repo) | [017](decisions/017-database-conventions.md) |
+| Write `scripts/sync-db.sh` in `vibra-backend` (with the first migrations) | [002](decisions/002-postgres-dapper-npgsql.md) |
+| Build and test the `Plan` model change in `vibra-ios` on a Mac | [018](decisions/018-database-schema.md) |
 
 ## Closed (2026-11-23)
 DbUp compatible with .NET 11 (spike, 2026-11-23) · Sprint length (3 × 8 days) · 3 native tools confirmed · DbUp · Hetzner VPS + Cloudflare R2/CDN · lossless for everyone · Simulator only · latest iOS · skeletons in Sprint 1 · catalog from owned CD.

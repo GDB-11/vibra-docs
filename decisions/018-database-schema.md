@@ -9,7 +9,7 @@ Initial table structure per module, following [017](017-database-conventions.md)
 
 | Topic | Chosen | Not chosen |
 |---|---|---|
-| Search data | Indexes on Catalog tables; Catalog serves search | A `search."SearchDocument"` copy filled by Catalog events (keeps the module, must be kept in sync) |
+| Search data | Indexes on Catalog tables; Catalog serves search; Search module removed | A `search."SearchDocument"` copy filled by Catalog events (keeps the module, must be kept in sync) |
 | Purchased item | Nullable `TrackId` and `AlbumId` | Polymorphic `item_id` (cannot have an FK) |
 
 ## Choice
@@ -67,15 +67,13 @@ No role tables. ASP.NET Core Identity ([007](007-auth-identity-jwt-refresh.md)) 
 - `Purchase`: a `CHECK` requires exactly the one of `TrackId` / `AlbumId` that matches `ItemType`. Partial unique indexes on (`UserId`, `TrackId`) and (`UserId`, `AlbumId`) block double purchase ([009](009-entitlements-backend.md)).
 
 ### Search and genres
-- **Search has no tables or migrations.** Catalog's first migration runs `CREATE EXTENSION IF NOT EXISTS pg_trgm`; trigram (and full-text) indexes go on `Artist."Name"`, `Album."Title"` and `Track."Title"`; Catalog serves search.
+- **There is no Search module** (removed, [001](001-modular-monolith.md)). Catalog's first migration runs `CREATE EXTENSION IF NOT EXISTS pg_trgm`; trigram (and full-text) indexes go on `Artist."Name"`, `Album."Title"` and `Track."Title"`; Catalog serves search.
 - **Genres:** omitted. The original draft listed them under Catalog; add them if a screen needs them.
 
 ## Consequences
 - Changes the data model of [009](009-entitlements-backend.md): `Purchase.item_id` split in two, `Plan.code` dropped.
 - Seeds use fixed `<Table>Code`, `FileKey` and `CoverKey` values, so files uploaded by hand still match after a database reset.
-- The Search module is left nearly empty (see Open items).
 - Sprint 1: the DbUp and Catalog migration tasks follow 017 and this decision (the sprint file is unchanged).
 
 ## Open items
-- Keep or remove the Search module (touches [001](001-modular-monolith.md) and the backend skeleton).
 - **To verify:** whether local StoreKit transaction IDs repeat after clearing transactions in Xcode. Until then, no unique constraint on `StoreTransactionId`.

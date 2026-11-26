@@ -39,7 +39,7 @@ No decision covered database conventions. Nothing had been migrated yet. These r
 - Hand-written SQL must quote every identifier; C# raw string literals keep it readable.
 - Column names match row-model property names, so `DefaultTypeMap.MatchNamesWithUnderscores` is no longer needed.
 - Module migrations are no longer independent: the order above is mandatory.
-- **Drift with `vibra-backend`:** its `CLAUDE.md` says snake_case and has no UTC or audit-column rules; `BaseDatabaseService` sets `MatchNamesWithUnderscores`. Update from the backend repo.
+- Sibling repos synced on 2026-11-26: backend rules, snake_case name mapping removed, UTC session set on the data source and on the compose server.
 
 ## Open items
 - None.
