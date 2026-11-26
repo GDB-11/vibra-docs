@@ -35,6 +35,8 @@ Split from the original `Vibra-Decisiones.md`. Implementation-level rules live i
 | 014 | [Result pattern (BindSharp)](decisions/014-result-pattern-bindsharp.md) | Decided |
 | 016 | [Podman as container runtime](decisions/016-podman-containers.md) | Decided |
 | 015 | Name: **Vibra** (see [naming-and-copy.md](naming-and-copy.md)) | Decided |
+| 017 | [Database conventions](decisions/017-database-conventions.md) | Decided |
+| 018 | [Database schema](decisions/018-database-schema.md) | Decided |
 | R01 | [Microservices](decisions/r01-microservices.md) | Rejected |
 | R02 | [gRPC / GraphQL](decisions/r02-grpc-graphql.md) | Rejected |
 | R03 | [APNs push](decisions/r03-apns-push.md) | Rejected |

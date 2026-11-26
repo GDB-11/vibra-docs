@@ -19,8 +19,20 @@ Audio in private object storage with short-lived signed URLs, delivered via CDN.
 |---|---|---|
 | Metadata, users, playlists, billing | PostgreSQL | Source of truth |
 | Audio | Private object storage | Short-lived signed URLs |
-| Cover art | Same storage, via CDN | 2–3 sizes generated at ingest |
+| Cover art | Separate R2 bucket, read via CDN | 2–3 sizes generated at ingest |
 | Cache/sessions | Valkey | Optional ([012](012-valkey-cache.md)) |
+
+### Buckets and object keys (2026-11-26)
+Both buckets exist.
+
+| Bucket | Access | Object key |
+|---|---|---|
+| `vibra-music` | Private, signed URLs | `tracks/{FileKey}.flac`, `previews/{FileKey}.m4a`, `uploads/{UploadKey}.flac` |
+| `vibra-images` | Read through CDN | `covers/{CoverKey}/{width}.jpg` |
+
+- **A new UUIDv4 per file**, separate from the entity's `<Table>Code` ([018](018-database-schema.md) stores the keys). Rejected: naming files after the album or track code (no extra column, but a replaced file keeps its address and caches may serve the old one).
+- A replaced file gets a new key and objects are never overwritten, so covers can be cached long-term. Old objects are deleted manually.
+- Store only the UUIDs and derive object keys from them; never store full URLs.
 
 **Ingest flow:** pre-signed upload URL → upload `.flac` → storage event → worker (FFmpeg/ffprobe) validates, extracts metadata (Vorbis tags, duration) and embedded cover art, generates the 30 s AAC preview → track marked `Ready`.
 
@@ -32,3 +44,5 @@ Audio in private object storage with short-lived signed URLs, delivered via CDN.
 - Current R2 free-tier limits and pricing.
 - Cloudflare terms for serving audio through its CDN on the free plan.
 - Short-lived signed URLs: R2 presigned URLs work on the S3 endpoint, not on a CDN custom domain. Confirm how signed access is combined with CDN caching (e.g. Worker or token validation) and that `AVPlayer` range/seek works through it.
+- CDN domain setup for `vibra-images`.
+- Cover widths (proposal: 300, 600, 1200 px).

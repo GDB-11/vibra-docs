@@ -18,19 +18,17 @@ Otherwise: **403 + 30 s `previewUrl`** (freemium experience, useful paywall).
 - Simulated refund: `Payment = Refunded` and the `Purchase` is removed (only case where a purchase is deleted).
 - Album gains tracks later: a purchased album includes everything it has, today and tomorrow.
 - Buying an album while owning single tracks: accepted with no discount, showing "You already have X of N" (prorated discount = optional extra).
-- Double purchase: blocked by `UNIQUE(user_id, item_type, item_id)`.
+- Double purchase: blocked by partial unique indexes on (`UserId`, `TrackId`) and (`UserId`, `AlbumId`).
 
 ## Data model (Billing)
-```
-Plan: id, code (monthly|annual), price_cents, currency, interval
-Subscription: id, user_id, plan_id, status (Active|Canceled|PastDue|Expired),
-              current_period_start/end, cancel_at_period_end
-Purchase: id, user_id, item_type (Track|Album), item_id, price_cents,
-          payment_id, purchased_at   UNIQUE(user_id, item_type, item_id)
-Payment: id, user_id, amount_cents, status (Succeeded|Failed|Refunded),
-         idempotency_key (UNIQUE), kind (Subscription|Purchase), created_at
-```
-Catalog `Track` and `Album` add `price_cents`, `currency`, `store_product_id`. Money = integer cents + ISO 4217; timestamps ISO 8601 UTC.
+`Plan`, `Subscription`, `Payment` and `Purchase`: columns and constraints in [018](018-database-schema.md). Catalog `Track` and `Album` have `PriceCents`, `Currency` and `StoreProductId`. Money = integer cents + ISO 4217; timestamps ISO 8601 UTC.
+
+**Changed 2026-11-26** (approved with 017/018):
+- `Purchase.item_id` became nullable `TrackId` / `AlbumId`, so both can have FKs; this replaces `UNIQUE(user_id, item_type, item_id)`.
+- `Plan.code` (`monthly`/`annual`) was dropped: `Interval` identifies the plan, and `PlanCode` is now the public UUID.
+- `Currency` was added to `Payment` and `Purchase`.
+
+In the endpoints below, `planCode` is that UUID (read from `GET /v1/plans`); `itemId` and `{id}` carry the item's public code, never the internal ID.
 
 ## Endpoints
 ```
