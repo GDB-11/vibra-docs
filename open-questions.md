@@ -14,6 +14,7 @@ The initial planning decisions were closed on 2026-11-23. What remains is verifi
 | Exact version number of "latest iOS" against installed Xcode | [008](decisions/008-ios-mvvm-local-packages.md) |
 | CDN domain setup for `vibra-images`; cover widths (proposal: 300, 600, 1200 px) | [003](decisions/003-audio-storage-cdn.md) |
 | Whether local StoreKit transaction IDs repeat after clearing transactions in Xcode | [018](decisions/018-database-schema.md) |
+| The `vibra-db` migrations run through DbUp, including the `$$` function bodies | [018](decisions/018-database-schema.md) |
 
 ## Still to decide
 
@@ -22,6 +23,7 @@ The initial planning decisions were closed on 2026-11-23. What remains is verifi
 | Which features to cut if time runs short (Library, offline downloads) | [build-order.md](build-order.md) |
 | Write `scripts/sync-db.sh` in `vibra-backend` (with the first migrations) | [002](decisions/002-postgres-dapper-npgsql.md) |
 | Build and test the `Plan` model change in `vibra-ios` on a Mac | [018](decisions/018-database-schema.md) |
+| `IngestJob."Status"` values (Sprint 3) | [018](decisions/018-database-schema.md) |
 
 ## Closed (2026-11-23)
 DbUp compatible with .NET 11 (spike, 2026-11-23) · Sprint length (3 × 8 days) · 3 native tools confirmed · DbUp · Hetzner VPS + Cloudflare R2/CDN · lossless for everyone · Simulator only · latest iOS · skeletons in Sprint 1 · catalog from owned CD.

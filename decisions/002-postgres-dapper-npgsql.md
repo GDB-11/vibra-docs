@@ -20,7 +20,9 @@ PostgreSQL, accessed with Dapper + Npgsql. **No EF Core.** Catalog search uses P
 - Alternatives considered: dbmate/Flyway (external CLI, awkward per-module sets), FluentMigrator/Evolve (more ceremony), hand-rolled scripts (would reimplement DbUp's tracking).
 - DbUp is a new NuGet package: **ask before adding** (this decision records the choice; the approval to add it is given at that time).
 - **`vibra-db` scope (decided 2026-11-23, "everything database related lives here, for order"):** source of truth for (1) DbUp migrations per module, including `CREATE EXTENSION IF NOT EXISTS pg_trgm` in Catalog's first migration; (2) dev/demo seed SQL; (3) the Postgres/Valkey compose file and container init scripts; (4) schema docs / ER diagram per module.
-- Layout: `migrations/<module>/NNNN_name.sql` · `seeds/` · `compose/` · `docs/` · `README.md`.
+- Layout: `database/` · `migrations/<module>/NNNN_name.sql` · `seeds/` · `compose/` · `docs/` · `README.md`.
+- **Database name: `VibraDB`** (2026-11-26; other options: `vibra`, `vibra_db`, `vibra_dev`, `vibra_music`). Mixed case, so SQL must double-quote it (`"VibraDB"`), and connection strings use `Database=VibraDB`.
+- `database/create_database.sql` creates it (UTF-8, time zone `UTC`). It is not a migration: run it once, connected to another database. Compose already creates `POSTGRES_DB` on an empty volume, so the script is for servers without Compose or existing volumes.
 - **Consumption: sync script.** `vibra-backend/scripts/sync-db.sh` copies each module's `.sql` into that module's Infrastructure as embedded resources (same pattern as `sync-contract.sh`). DbUp still runs in-process, so there is one migration path for compose and Testcontainers. One migration set per module; never mix modules in a migration.
 - `vibra-backend/CLAUDE.md` was synced with this on 2026-11-26. `scripts/sync-db.sh` is not written yet.
 - Details: `vibra-backend/CLAUDE.md` (Data access).
